@@ -1,0 +1,84 @@
+
+<table border='1'>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Published Year</th>
+      <th>Action</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngFor="let book of books,let i =index">
+      <td>{{ book.id}}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.publishedYear }}</td>
+      <td><button class="btn">Edit</button></td>
+      <td><button class="btn" (click)="deleteBook(book.id,i)">Delete</button></td>
+    </tr> -->
+
+    <tr *ngFor="let book of bookData,let i =index">
+      <td>{{ book.id}}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.publishedyear }}</td>
+      <td><button class="btn" (click)="getAllDetails(book)">Edit</button></td>
+      <td><button class="btn" (click)="deleteBook(book)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<div class="aside">
+
+  <!-- <button class="btn" >Add NewBook </button>  -->
+  <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#addbook" data-whatever="@mdo">Add NewBook</button>
+  &nbsp;|&nbsp;
+  <button (click)="logout()" class="btn" >Logout</button>
+
+
+</div>
+
+
+<!-- //for addingUp the data -->
+<form class="form" [formGroup]="bookForm"  *ngIf="!toshow"  (ngSubmit)="addBook() ">
+
+  id:
+ <input type="number" formControlName="id"><br>
+  title:
+  <input type="text" formControlName="title"><br>
+  author:
+  <input type="text" formControlName="author"><br>
+  publishedYear:
+  <input type="number" formControlName="publishedyear">
+
+<button class="btn" type="submit"  id="gap"    *ngIf="!toshow"  [disabled]="bookForm.invalid">Submit</button>
+</form>
+
+
+<!-- for editing purpose -->
+<form class="form" [formGroup]="editForm" >
+
+  id:
+ <input type="text" formControlName="edit_id" [value]="bookDetails?.id"><br>
+  title:
+  <input type="text" formControlName="edit_title" [value]="bookDetails?.title"><br>
+  author:
+  <input type="text" formControlName="edit_author" [value]="bookDetails?.author"><br>
+  publishedYear:
+  <input type="number" formControlName="edit_publishedyear" [value]="bookDetails?.publishedyear">
+
+<button class="btn" type="submit"  id="gap"  (click)="updateBook(bookData)" [disabled]="bookForm.invalid">Submit</button>
+</form>
+
+
+<!-- HTML !-->
+<!-- <button  role="button">Button 24</button> -->
+
+
+<!-- HTML !-->
+<!-- <button class="btn" role="button">Button 29</button>
+
+  /* CSS */ -->
+
