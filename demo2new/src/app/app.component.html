@@ -1,0 +1,23 @@
+<nav class="flex align-center">
+  <p style="font-size: 2rem;"><span>Books</span>&nbsp;ManageMent</p>
+  <ul>
+    <li class="big-screens">
+      <a   style="font-size: 1.6rem;" routerLink="home">Home</a>
+      <a   style="font-size: 1.6rem;" routerLink="Books">Books</a>
+
+      <!-- <a routerLink="Home">Store</a> -->
+      <!-- <a routerLink="Register" > About Us</a> -->
+
+      <button style="font-size: 1.6rem;"  class="btn register"  *ngIf="!authService.isNewUser"    routerLink="register">Register</button>
+      <button style="font-size: 1.6rem;"  class="btn login"  *ngIf="!authService.isLoggedIn" routerLink="login">Log In</button>
+    </li>
+    <li class="small-screens">
+      <i class="fa-solid fa-bars"></i>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+<router-outlet></router-outlet>
